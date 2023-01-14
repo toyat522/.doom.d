@@ -50,3 +50,5 @@
 ;(unpin! t)
 
 (package! evil-tutor)
+(package! org-auto-tangle)
+(package! flycheck-languagetool)

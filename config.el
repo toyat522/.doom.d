@@ -44,7 +44,6 @@
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/org/")
 
-
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
 ;;
@@ -76,3 +75,21 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
+
+(define-key global-map (kbd "C-.") 'company-files)
+
+(evil-define-key 'normal dired-mode-map
+    (kbd "h") 'dired-up-directory
+    (kbd "l") 'dired-find-file)
+
+(use-package! org-auto-tangle
+    :defer t
+    :hook (org-mode . org-auto-tangle-mode)
+    :config
+    (setq org-auto-tangle-default t))
+
+(use-package! flycheck-languagetool
+    :ensure t
+    :hook (text-mode . flycheck-languagetool-setup)
+    :init
+    (setq flycheck-languagetool-server-jar "~/Programs/LanguageTool-6.0/languagetool-server.jar"))
