@@ -32,8 +32,8 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-font (font-spec :family "Terminus (TTF)" :size 18)
-      doom-variable-pitch-font (font-spec :family "Terminus (TTF)" :size 18))
+(setq doom-font (font-spec :family "Terminus" :size 18)
+      doom-variable-pitch-font (font-spec :family "Terminus" :size 18))
 (setq doom-theme 'doom-one)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
@@ -76,6 +76,8 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
+(setq lsp-java-java-path "/usr/lib/jvm/java-11-openjdk-amd64/bin/java")
+
 (define-key global-map (kbd "C-.") 'company-files)
 
 (evil-define-key 'normal dired-mode-map
@@ -88,8 +90,3 @@
     :config
     (setq org-auto-tangle-default t))
 
-(use-package! flycheck-languagetool
-    :ensure t
-    :hook (text-mode . flycheck-languagetool-setup)
-    :init
-    (setq flycheck-languagetool-server-jar "~/Programs/LanguageTool-6.0/languagetool-server.jar"))
